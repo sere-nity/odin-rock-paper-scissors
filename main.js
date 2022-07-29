@@ -43,8 +43,17 @@ function game(){
     for (let i = 0; i < 5; i++){
         score = playRound(checkUserChoiceValidity(), getComputerChoice(), score);
         console.log(score);
-
     }
+    if (score > 0){
+        console.log("YOU WIN!");
+    }
+    else if (score < 0){
+        console.log("YOU LOSE")
+    }
+    else{
+        console.log("It's a tie");
+    }
+    
 }
 
 //Could call functions as parameters?
@@ -70,9 +79,11 @@ function playRound(userInput, computerInput, _score){
                 case "paper":
                     alert("YOU LOSE! PAPER BEAT ROCK")
                     score--;
+                    return score;
                     break;
                 case "rock":
                     alert("IT'S A TIE");
+                    return score;
                     break;
                 default:
                        
@@ -83,13 +94,16 @@ function playRound(userInput, computerInput, _score){
                 case "rock":
                     alert("YOU WIN! PAPER BEATS ROCK");
                     score++;
+                    return score;
                     break;
                 case "scissors":
                     alert("YOU LOSE! SCISSORS BEAT PAPER");
                     score--;
+                    return score;
                     break;
                 case "paper":
                     alert("IT'S A TIE");
+                    return score;
                     break;
                 default:
                     
@@ -100,14 +114,17 @@ function playRound(userInput, computerInput, _score){
                 case "paper":
                     alert("YOU WIN! SCISSORS BEAT PAPER");
                     score++;
+                    return score;
                     break;
                 case "rock":
                     alert("YOU LOSE! ROCK BEATS SCISSORS");
                     score--;
+                    return score;
                     break;
                 case "scissors":
                     alert("IT'S A TIE");
                     break;
+                    return score;
                 default:
                     
             }
