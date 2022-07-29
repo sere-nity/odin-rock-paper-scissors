@@ -1,3 +1,5 @@
+
+
 // Returns a string value - rock, paper, scissors 
 // based on randomly generated integer
 function getComputerChoice(){
@@ -14,7 +16,7 @@ function getComputerChoice(){
 // }
 
 function getUserChoice(){
-    let userInput = prompt("Rock, Paper or Scissors");
+    let userInput = prompt("Rock, Paper or Scissors", "");
     //Make userInput case insensitive
     userInput = userInput.toLowerCase();
     //return string or number value?
@@ -33,56 +35,86 @@ function checkUserChoiceValidity(){
     }
 }
 
+game();
+
+function game(){
+
+    let score = 0;
+    for (let i = 0; i < 5; i++){
+        score = playRound(checkUserChoiceValidity(), getComputerChoice(), score);
+        console.log(score);
+
+    }
+}
 
 //Could call functions as parameters?
-function playRound(userInput, computerInput){
+function playRound(userInput, computerInput, _score){
+    
+    //deugging
     console.log(userInput);
     console.log(computerInput);
+    
+    //scoring
+    let score = _score;
+    
+
     //Comparison of both? 
     switch(userInput){
         case "rock":
             switch(computerInput){
                 case "scissors":
                     alert("YOU WIN! ROCK BEATS SCISSORS");
+                    score++;
+                    return score;
                     break;
                 case "paper":
                     alert("YOU LOSE! PAPER BEAT ROCK")
+                    score--;
                     break;
                 case "rock":
                     alert("IT'S A TIE");
+                    break;
                 default:
-                    return;     
+                       
             }
         break;
         case "paper":
             switch(computerInput){
                 case "rock":
                     alert("YOU WIN! PAPER BEATS ROCK");
+                    score++;
                     break;
                 case "scissors":
                     alert("YOU LOSE! SCISSORS BEAT PAPER");
+                    score--;
                     break;
                 case "paper":
                     alert("IT'S A TIE");
+                    break;
                 default:
-                    return;
+                    
             }
+        break;
         case "scissors":
             switch(computerInput){
                 case "paper":
                     alert("YOU WIN! SCISSORS BEAT PAPER");
+                    score++;
                     break;
                 case "rock":
                     alert("YOU LOSE! ROCK BEATS SCISSORS");
+                    score--;
                     break;
                 case "scissors":
                     alert("IT'S A TIE");
+                    break;
                 default:
-                    return;
+                    
             }
+        break;
         default:
-            return;
     }
-
+    
+    
 }
 
